@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_类的基本知识</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //创建一个Person类
+        class Person{
+
+            //构造器方法
+            constructor(name,age){
+                //构造器中的this是谁--类的实例对象
+                this.name = name
+                this.age = age
+            }
+            //一般方法
+            speak(){
+                //speak方法放在了那里--person类的原型对象上，供实例使用
+                //通过person实例调用speak时，speak中的this就是person实例
+                console.log(`我叫${this.name},我的年龄是${this.age}`);
+            }
+
+        }
+
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade = grade
+            }
+            //重写从父类继承过来的方法
+            speak(){
+                console.log(`我叫${this.name},我的年龄是${this.age},我的年级是${this.grade}`);
+
+            }
+            study(){
+                //study方法放在了那里--类的原型上，供实例使用
+                //通过Student实例调用study时，study中的this就是Student实例
+                console.log(`我很努力地学习`);
+
+            }
+
+        }
+
+        const s1 = new Student('tina',17,'大三')
+        console.log(s1);
+        s1.speak()
+        s1.study()
+
+
+        //创建一个Person的实例对象
+        const p1 = new Person('william',29)
+        const p2 = new Person('jammy',19)
+        
+        console.log(p1);
+        console.log(p2);
+        p1.speak()
+        p2.speak()
+
+
+
+    </script>
+    
+</body>
+</html>
